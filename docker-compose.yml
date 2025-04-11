@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  web:
+    image: combodo/itop
+    ports:
+      - "8000:80"
+    volumes:
+      - itop_data:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - MYSQL_ROOT_PASSWORD=SecureRoot123!
+      - MYSQL_DATABASE=itop
+      - MYSQL_USER=itop_user
+      - MYSQL_PASSWORD=ItopUser456!
+
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=SecureRoot123!
+      - MYSQL_DATABASE=itop
+      - MYSQL_USER=itop_user
+      - MYSQL_PASSWORD=ItopUser456!
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  itop_data:
+  db_data:
+
