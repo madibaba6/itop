@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   web:
-    image: combodo/itop
+    image: linuxmuster/itop:2.7.2
     ports:
       - "8000:80"
     volumes:
